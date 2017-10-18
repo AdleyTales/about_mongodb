@@ -30,16 +30,22 @@ exports.insert = function(username,password,email,callback){
 }
 
 // 查
-exports.query = function(){
-    
+exports.query = function(obj,cb){
+    mModel.find(obj,function(err,doc){
+       cb(err,doc)
+    })
 }
 
 // 改 
-exports.update = function(){
-    
+exports.update = function(findObj,setObj,cb){
+    mModel.update(findObj,{ $set : setObj },function(err) {
+        cb(err)
+    })
 }
 
 // 删
-exports.delete = function(){
-    
+exports.remove = function(obj,cb){
+    mModel.remove(obj,function(err){
+        cb(err)
+    })
 }
